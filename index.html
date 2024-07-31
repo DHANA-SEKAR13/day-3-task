@@ -1,0 +1,30 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 3 Task</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://restcountries.com/v3.1/all", true);
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                var response = JSON.parse(xhr.responseText);
+                console.log(response);
+                response.forEach(function(country) {                      
+                    console.log(country.name.common);
+                    console.log(country.flags.png);
+                    console.log(country.region, country.subregion);
+                    console.log(country.population);
+                });
+            } else {
+                console.log("The request failed");
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>
